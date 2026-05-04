@@ -1,4 +1,10 @@
 
+if(CHIAKI_ENABLE_ANDROID)
+    set(CHIAKI_USE_SYSTEM_MINIUPNPC OFF CACHE BOOL "" FORCE)
+    set(CHIAKI_USE_SYSTEM_JSONC OFF CACHE BOOL "" FORCE)
+    set(CHIAKI_USE_SYSTEM_OPENSSL OFF CACHE BOOL "" FORCE)
+endif()
+
 set(HEADER_FILES
 		include/chiaki/session.h
 		include/chiaki/common.h
