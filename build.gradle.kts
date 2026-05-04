@@ -50,8 +50,8 @@ android {
 
     externalNativeBuild {
         cmake {
-            // Use chiaki-ng submodule root CMakeLists.txt (relative path)
-            path = file("${project.projectDir}/CMakeLists.txt")
+            // Use chiaki-ng android/app CMakeLists.txt (relative path)
+            path = file("${project.projectDir}/android/app/CMakeLists.txt")
             version = "3.22.1"
         }
     }
