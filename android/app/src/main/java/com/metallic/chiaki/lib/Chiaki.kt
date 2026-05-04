@@ -72,35 +72,34 @@ data class ConnectInfo(
 	val videoProfile: ConnectVideoProfile
 ): Parcelable
 
-private class ChiakiNative
+object ChiakiNative
 {
 	data class CreateResult(var errorCode: Int, var ptr: Long)
-	companion object
+
+	init
 	{
-		init
-		{
-			System.loadLibrary("chiaki-jni")
-		}
-		@JvmStatic external fun errorCodeToString(value: Int): String
-		@JvmStatic external fun quitReasonToString(value: Int): String
-		@JvmStatic external fun quitReasonIsError(value: Int): Boolean
-		@JvmStatic external fun getDeviceUid(): String
-		@JvmStatic external fun videoProfilePreset(resolutionPreset: Int, fpsPreset: Int, codec: Codec): ConnectVideoProfile
-		@JvmStatic external fun sessionCreate(result: CreateResult, connectInfo: ConnectInfo, logFile: String?, logVerbose: Boolean, javaSession: Session)
-		@JvmStatic external fun sessionFree(ptr: Long)
-		@JvmStatic external fun sessionStart(ptr: Long): Int
-		@JvmStatic external fun sessionStop(ptr: Long): Int
-		@JvmStatic external fun sessionJoin(ptr: Long): Int
-		@JvmStatic external fun sessionSetSurface(ptr: Long, surface: Surface?)
-		@JvmStatic external fun sessionSetControllerState(ptr: Long, controllerState: ControllerState)
-		@JvmStatic external fun sessionSetLoginPin(ptr: Long, pin: String)
-		@JvmStatic external fun discoveryServiceCreate(result: CreateResult, options: DiscoveryServiceOptions, javaService: DiscoveryService)
-		@JvmStatic external fun discoveryServiceFree(ptr: Long)
-		@JvmStatic external fun discoveryServiceWakeup(ptr: Long, host: String, userCredential: Long, ps5: Boolean)
-		@JvmStatic external fun registStart(result: CreateResult, registInfo: RegistInfo, javaLog: ChiakiLog, javaRegist: Regist)
-		@JvmStatic external fun registStop(ptr: Long)
-		@JvmStatic external fun registFree(ptr: Long)
+		System.loadLibrary("chiaki-jni")
 	}
+
+	@JvmStatic external fun errorCodeToString(value: Int): String
+	@JvmStatic external fun quitReasonToString(value: Int): String
+	@JvmStatic external fun quitReasonIsError(value: Int): Boolean
+	@JvmStatic external fun getDeviceUid(): String
+	@JvmStatic external fun videoProfilePreset(resolutionPreset: Int, fpsPreset: Int, codec: Codec): ConnectVideoProfile
+	@JvmStatic external fun sessionCreate(result: CreateResult, connectInfo: ConnectInfo, logFile: String?, logVerbose: Boolean, javaSession: Session)
+	@JvmStatic external fun sessionFree(ptr: Long)
+	@JvmStatic external fun sessionStart(ptr: Long): Int
+	@JvmStatic external fun sessionStop(ptr: Long): Int
+	@JvmStatic external fun sessionJoin(ptr: Long): Int
+	@JvmStatic external fun sessionSetSurface(ptr: Long, surface: Surface?)
+	@JvmStatic external fun sessionSetControllerState(ptr: Long, controllerState: ControllerState)
+	@JvmStatic external fun sessionSetLoginPin(ptr: Long, pin: String)
+	@JvmStatic external fun discoveryServiceCreate(result: CreateResult, options: DiscoveryServiceOptions, javaService: DiscoveryService)
+	@JvmStatic external fun discoveryServiceFree(ptr: Long)
+	@JvmStatic external fun discoveryServiceWakeup(ptr: Long, host: String, userCredential: Long, ps5: Boolean)
+	@JvmStatic external fun registStart(result: CreateResult, registInfo: RegistInfo, javaLog: ChiakiLog, javaRegist: Regist)
+	@JvmStatic external fun registStop(ptr: Long)
+	@JvmStatic external fun registFree(ptr: Long)
 }
 
 class ErrorCode(val value: Int)
