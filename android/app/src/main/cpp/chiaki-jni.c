@@ -115,6 +115,15 @@ JNIEXPORT jboolean JNICALL JNI_FCN(quitReasonIsError)(JNIEnv *env, jobject obj, 
 	return chiaki_quit_reason_is_error(value);
 }
 
+JNIEXPORT jstring JNICALL JNI_FCN(getDeviceUid)(JNIEnv *env, jobject obj)
+{
+	size_t duid_size = CHIAKI_DUID_STR_SIZE;
+	char duid[duid_size];
+	chiaki_holepunch_generate_client_device_uid(duid, &duid_size);
+	jstring result = E->NewStringUTF(env, duid);
+	return result;
+}
+
 JNIEXPORT jobject JNICALL JNI_FCN(videoProfilePreset)(JNIEnv *env, jobject obj, jint resolution_preset, jint fps_preset, jobject codec)
 {
 	ChiakiConnectVideoProfile profile = { 0 };

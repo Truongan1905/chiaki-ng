@@ -84,6 +84,7 @@ private class ChiakiNative
 		@JvmStatic external fun errorCodeToString(value: Int): String
 		@JvmStatic external fun quitReasonToString(value: Int): String
 		@JvmStatic external fun quitReasonIsError(value: Int): Boolean
+		@JvmStatic external fun getDeviceUid(): String
 		@JvmStatic external fun videoProfilePreset(resolutionPreset: Int, fpsPreset: Int, codec: Codec): ConnectVideoProfile
 		@JvmStatic external fun sessionCreate(result: CreateResult, connectInfo: ConnectInfo, logFile: String?, logVerbose: Boolean, javaSession: Session)
 		@JvmStatic external fun sessionFree(ptr: Long)
