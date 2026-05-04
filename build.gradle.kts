@@ -65,11 +65,11 @@ android {
         jvmTarget = "17"
     }
 
-    ndkVersion = "27.1.12297006"
+    ndkVersion = "25.2.9519653"
 
     buildFeatures {
         viewBinding = true
-        prefab = false  // Match original chiaki-ng
+        prefab = false  // Disable prefab, use local oboe submodule
     }
 
     // Source sets - include chiaki-ng lib package only

@@ -143,6 +143,8 @@ bool android_chiaki_video_decoder_video_sample(uint8_t *buf, size_t buf_size, vo
 {
 	bool r = true;
 	AndroidChiakiVideoDecoder *decoder = user;
+	if(!decoder)
+		return false;
 	chiaki_mutex_lock(&decoder->codec_mutex);
 
 	if(!decoder->codec)
