@@ -69,7 +69,7 @@ android {
 
     buildFeatures {
         viewBinding = true
-        prefab = false  // Disabled for compatibility
+        prefab = true  // Required for oboe
     }
 
     // Source sets - include chiaki-ng lib package only
